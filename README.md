@@ -9,7 +9,7 @@ FastApi is a Python web framework for making a backend APIs. Running FastApi for
 ## First time setup steps
 
 - Install [python3](https://www.python.org/downloads/) and [pip3](https://pip.pypa.io/en/stable/installing/)
-- Run Command
+- Run Command (the using of virtual environment is not the same in all devices)
 
 ```
 pip3 install virtualenv
