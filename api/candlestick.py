@@ -1,8 +1,9 @@
+from data_manipulation import data_manipulation
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import requests
 from constant import *
-from datamani import *
+from data_manipulation import *
 
 app = FastAPI()
 
@@ -10,7 +11,6 @@ origins = [
     "http://localhost:3000",
     "localhost:3000"
 ]
-
 
 app.add_middleware(
     CORSMiddleware,
@@ -22,7 +22,7 @@ app.add_middleware(
 
 @app.get("/get-candle/{sym}")
 def get_candle(sym: str):
-    datatemp = requests.get(f"{apiUrl}/klines?symbol={sym}",
+    data_temp = requests.get(f"{apiUrl}/klines?symbol={sym}",
                             params=params, headers={"content-type":"application/json"})
 
-    return {'data': datamani(datatemp.json())}
+    return {'data': data_manipulation(data_temp.json())}

@@ -4,18 +4,18 @@ apiUrl = "https://api.binance.com/api/v3"
 
 interval = "1h"
 
-timeEnd = datetime.now()
+time_end = datetime.now()
 
 delta = timedelta(seconds = 3600)
 
-timeStart = timeEnd - (168*delta)
+time_start = time_end - (168*delta)
 
-timeEnd = int(timeEnd.timestamp())*1000
-timeStart = int(timeStart.timestamp())*1000
+time_end = int(time_end.timestamp())*1000
+time_start = int(time_start.timestamp())*1000
 
 params = {
     "interval": interval,
-    "startTime": timeStart,
-    "endTime": timeEnd,
+    "startTime": time_start,
+    "endTime": time_end,
 }
 
