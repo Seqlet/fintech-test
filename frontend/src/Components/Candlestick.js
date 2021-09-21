@@ -13,7 +13,19 @@ const Candlestick = ({ symbol }) => {
           cancelToken: source.token,
         })
         .then((respond) => {
-          setBars(respond.data.data);
+          //for formating the data for the react-google-charts-library
+          const dataFormat = respond.data.data.map((stick) => {
+            return [
+              format(new Date(stick.timestamp), "yyyy-MM-dd hh:mm:ss aa"),
+              parseFloat(stick.low),
+              parseFloat(stick.open),
+              parseFloat(stick.close),
+              parseFloat(stick.high),
+            ];
+          });
+          //for the first row of react-google-charts
+          dataFormat.unshift(["day", "a", "b", "c", "d"]);
+          setBars(dataFormat);
         })
         .catch((err) => {
           if (axios.isCancel(err)) {
@@ -30,19 +42,6 @@ const Candlestick = ({ symbol }) => {
     };
   }, [symbol]);
 
-  //for formating the data for the react-google-charts-library
-  const dataFormat = bars.map((stick) => {
-    return [
-      format(new Date(stick.timestamp), "yyyy-MM-dd hh:mm:ss aa"),
-      parseFloat(stick.low),
-      parseFloat(stick.open),
-      parseFloat(stick.close),
-      parseFloat(stick.high),
-    ];
-  });
-
-  dataFormat.unshift(["day", "a", "b", "c", "d"]); //for the first row of react-google-charts
-
   return (
     <div>
       <Chart
@@ -50,7 +49,7 @@ const Candlestick = ({ symbol }) => {
         height={350}
         chartType="CandlestickChart"
         loader={<div>Loading Chart</div>}
-        data={dataFormat}
+        data={bars}
         options={{
           legend: "none",
           bar: { groupWidth: "100%" }, // Remove space between bars.
