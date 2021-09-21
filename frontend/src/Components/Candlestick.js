@@ -5,11 +5,12 @@ import { format } from "date-fns";
 
 const Candlestick = ({ symbol }) => {
   const [bars, setBars] = useState([]);
+  const url = "http://127.0.0.1:8000"; //api link from FastApi serve port change to the port your fast api is running on
   useEffect(() => {
     const source = axios.CancelToken.source();
     const getData = async () => {
       await axios
-        .get(`http://127.0.0.1:8000/get-candle/${symbol}`, {
+        .get(`${url}/get-candle/${symbol}`, {
           cancelToken: source.token,
         })
         .then((respond) => {
