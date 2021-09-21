@@ -41,6 +41,30 @@ To get the candlestick price, navigate to the link that Unicorn is running, foll
 
 Example of api link: http://127.0.0.1:8000/get-candle/BTCUSDT (this will get the candlestick value of BTCUSDT pair in 1 hour interval for the total period of 1 week starting from the current time back to the previous 7 days)
 
+The example output of the api is givin below, the result will be in objects format 
+
+```
+{
+   "data":[
+      {
+         "timestamp":1631606400000, //refer to the start time of the bar
+         "open":"45720.03000000", //refer to the open price of the bar
+         "high":"46048.49000000", //refer to the highest price in the bar
+         "low":"45678.01000000",  //refer to the lowest price in the bar
+         "close":"45961.72000000" //refer to the closing price of the bar (1 hour after opening time)
+      },
+      {
+         "timestamp":1631610000000,
+         "open":"45961.71000000",
+         "high":"46178.43000000",
+         "low":"45729.52000000",
+         "close":"45836.71000000"
+      }
+   ]
+}
+```
+
+
 ## To start frontend webstacking 
 
 You can start running the react static website by accessing the front-end folder and run the command
