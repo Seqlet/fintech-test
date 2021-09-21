@@ -51,6 +51,6 @@ The app will run at http://localhost:3000
 
 You will need to make an adjustment to the connection of the API from FastApi to the React app by accessing the Candlestick.js files in the Components folder:
 
-<img width="945" alt="Screen Shot 2564-09-21 at 15 12 24" src="https://user-images.githubusercontent.com/54341219/134135821-d06f891b-2059-4abc-9b3a-b844c3f86762.png">
+<img width="945" alt="Screen Shot 2564-09-21 at 15 16 09" src="https://user-images.githubusercontent.com/54341219/134136363-4471085f-36e8-445c-a645-1103b1d5207a.png">
 
-You will need to change the const url to the location that uvicorn of the backend is running as in line 8 of the example image.
+You will need to change the const url to the location that Uvicorn is running as in line 8 of the example image.
